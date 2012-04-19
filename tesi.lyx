@@ -1,0 +1,439 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass deistesi
+\begin_preamble
+
+\end_preamble
+\use_default_options false
+\maintain_unincluded_children false
+\language italian
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement h
+\paperfontsize 12
+\spacing onehalf
+\use_hyperref true
+\pdf_title "Cloud Migration"
+\pdf_author "Andrea Decorte"
+\pdf_subject "Cloud Computing"
+\pdf_keywords "cloud, SCE, migration, enterprise, IBM"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks true
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 0
+\use_mhchem 0
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Indice
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 17page%
+\topmargin 12pheight%
+\rightmargin 8page%
+\bottommargin 12pheight%
+\secnumdepth 4
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle plain
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout 1. Facolta
+Ingegneria
+\end_layout
+
+\begin_layout 2.a Corso di laurea
+Ingegneria informatica
+\end_layout
+
+\begin_layout 3. Titolo
+Super interessante
+\end_layout
+
+\begin_layout 4. Corso
+Ingegneria del software
+\end_layout
+
+\begin_layout 5. Laureando
+Andrea Decorte
+\end_layout
+
+\begin_layout 6.a Relatore
+Big Professor
+\end_layout
+
+\begin_layout 6.b Correlatore 1
+Meni
+\end_layout
+
+\begin_layout 6.c Correlatore 2
+Toni
+\end_layout
+
+\begin_layout 7. Sessione
+iii
+\end_layout
+
+\begin_layout 8. Anno Accademico
+2010 -- 2011
+\end_layout
+
+\begin_layout 9. Dedica
+To everybody
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frontmatter}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FloatList figure
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frontmatter}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{mainmatter}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% Questi abbelliscono l'intestazione delle pagine
+\end_layout
+
+\begin_layout Plain Layout
+
+% successive a quella di inizio capitolo.
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagestyle{fancy}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+% Nomi dei capitoli in lowercase nelle intestazioni
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+chaptermark}[1]{
+\end_layout
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+markboth{
+\backslash
+MakeUppercase{
+\end_layout
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+chaptername}
+\backslash
+ 
+\backslash
+thechapter.
+\end_layout
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+ #1}{}}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead[EL,OR]{
+\backslash
+leftmark}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead[OL,EC,OC,ER]{ }
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter*
+Introduzione
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+aggiungiAIndice{Introduzione}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+primalettera{I}
+\end_layout
+
+\end_inset
+
+l tema del cloud è agli onori della cronaca.
+\end_layout
+
+\begin_layout Chapter
+Cloud computing
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+primalettera{I}
+\end_layout
+
+\end_inset
+
+l cloud computing è ............
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "Cap2.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter*
+Conclusioni
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+aggiungiAIndice{Conclusioni}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+primalettera{I}
+\end_layout
+
+\end_inset
+
+l cloud computing è .............
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%add to index with the right hyperlink
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+cleardoublepage 
+\backslash
+phantomsection 
+\backslash
+addcontentsline{toc}{chapter}{Bibliografia}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "bibliografia"
+options "alpha"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter*
+Ringraziamenti
+\end_layout
+
+\begin_layout Standard
+Grazie a Andrea che ha pubblicato il modello, anche se il grosso del lavoro
+ era già fatto da Filippo Zangheri!
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{mainmatter}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

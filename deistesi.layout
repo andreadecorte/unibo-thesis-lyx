@@ -1,0 +1,495 @@
+#% Do not delete the line below; configure depends on this
+# \DeclareLaTeXClass[book]{thesis (DEIS)}
+# DEIS thesis textclass definition file.
+# Author: Filippo Zangheri <filippo.zangheri@yahoo.it>
+# Date: 08-jan-2008
+#
+# Heavily modified definition based on work by F. Callegati,
+# C. Monti and others.
+#
+# Usage:
+#
+# 1. Copy this file to /usr/local/share/lyx/layouts, or
+#    wherever else LyX keeps .layout files in your system;
+#
+# 2. Reconfigure LyX and restart it.
+#
+# 3. Create a new file with LyX and assign it the document
+#    class provided by this file "thesis (DEIS)";
+#
+# 4. The only options you need to adjust by hand are,
+#    Character Size (12), Line Skip (one and a half),
+#    Page Style (plain) and Document on two sides (enable);
+#
+# 5. Have fun with LyX!
+#
+
+########## Read in LyX standard definitions
+#Input book.layout
+Input stdclass.inc
+Input stdlists.inc
+Input stdsections.inc
+#Input stdstarsections.inc
+
+# remove the layouts that do not make sense.
+NoStyle		Author
+NoStyle		Verse
+NoStyle		Date
+NoStyle		Abstract
+NoStyle		Part*
+NoStyle		Section*
+NoStyle		Subsection*
+NoStyle		Subsubsection*
+NoStyle		Paragraph*
+NoStyle		Subparagraph
+NoStyle		Subparagraph*
+NoStyle		Address
+NoStyle		Right_Address
+NoStyle		Left_Address
+
+# General textclass parameters
+Columns			1
+Sides			2
+PageStyle		Plain
+MaxCounter		Counter_Subsubsection
+
+DefaultFont
+	Family		Roman
+	Series		Medium
+	Shape		Up
+	Size		normal
+	Color		none
+EndFont
+
+ClassOptions
+	FontSize	12
+	PageStyle	plain
+End
+
+# LaTeX Preamble
+Preamble
+% Customized LaTeX preamble %%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% --- Page geometry --- %
+\usepackage{geometry}
+\geometry{
+	verbose,a4paper,lmargin=0.17\paperwidth,
+	rmargin=0.1\paperwidth
+}
+
+% Vertical length parameters
+
+% Text height
+\setlength\textheight{0.7\paperheight}
+% Space at top of page
+\setlength\topmargin{0pt}
+% Space beteen header and text
+\setlength\headsep{0.08\textheight}
+% Space between text and footer (not footnote!)
+\setlength\footskip{0.08\textheight}
+% 2.5 lines space between text and footnote
+\renewcommand\footnoterule{
+	\vspace{2.5em}
+	\kern-3\p@\hrule\@width.4\columnwidth%
+	\kern2.6\p@}
+  
+% --- Common packages --- %
+\usepackage{amsmath,amsfonts,amssymb,amsthm,multicol}
+\usepackage{epsfig,verbatim}
+\usepackage{ifthen}
+
+% --- Big letters at the beginning of chapters --- %
+% "ptmri" is the italic version of "ptmr"
+\newfont{\iniziocap}{ptmri scaled 5000}
+\newcommand{\primalettera}[1]{
+	{\iniziocap #1}
+
+
+	\vspace*{-4em}\hangindent=4em\hangafter=-3\hspace*{-1.5em}}
+
+% --- Fonts --- %
+%\usepackage{ae}
+%\usepackage{aecompl}
+%\usepackage{lmodern}
+\renewcommand{\rmdefault}{ptm}
+\renewcommand{\sfdefault}{phv}
+\renewcommand{\ttdefault}{pcr}
+\renewcommand{\sldefault}{it}
+
+
+% --- For clickable URL's --- %
+\usepackage{hyperref}
+
+% --- Fancy headers --- %
+\usepackage{fancyhdr}
+
+% --- Useful commands --- %
+\newcommand{\clearemptydoublepage}{
+	\newpage{\pagestyle{empty}
+	\cleardoublepage}
+}
+
+% --- Andrea: Add unnumbered chapters to index and fix the headers --- %
+\newcommand{\aggiungiAIndice}[1]
+{ %adds chapter to index with the chosen name
+\addcontentsline{toc}{chapter}{\protect\numberline{}#1}
+%adds the correct header check fancyhdr docs
+\markboth{#1}{} 
+}
+
+\newcommand{\@titolo}{?}
+
+\newcommand{\@facolta}{?}
+
+\newcommand{\@corso}{?}
+
+\newcommand{\@annoaccademico}{?}
+
+\newcommand{\@sessione}{i}
+
+\newcommand{\@relatore}{?}
+
+\newcommand{\@laureando}{?}
+
+\newcommand{\facolta}[1]{
+ \renewcommand{\@facolta}{
+ \uppercase{facolt\`a di #1}}}
+
+\newcommand{\corso}[1]{
+ \renewcommand{\@corso}{\uppercase{#1}}}
+
+\newcommand{\annoaccademico}[1]{
+ \renewcommand{\@annoaccademico}{#1}}
+
+\newcommand{\sessione}[1]{
+ \renewcommand{\@sessione}{\uppercase{#1}}}
+
+\newcommand{\relatore}[2][Chiar.mo Prof. Ing.]{
+ \renewcommand{\@relatore}{#1\\ \uppercase{#2}}}
+
+\newcommand{\laureando}[1]{
+ \renewcommand{\@laureando}{\uppercase{#1}}}
+
+\newcommand{\titolo}[1]{
+ \renewcommand{\@titolo}{\uppercase{#1}}}
+
+% --- Personalized title page --- %
+\renewcommand{\maketitle}{
+ \begin{titlepage}{
+  \vspace*{-0.1\textheight}
+  \begin{center}\begin{large}
+   \uppercase{alma mater studiorum -- universit\`a di bologna\\}
+   \medskip\end{large}
+   \smallskip
+   \rule{\textwidth}{.4pt}\\
+   \vfill 
+   \begin{large}
+   \uppercase{\@facolta\\}
+   \vfill
+   \ifthenelse{\not\isundefined{\@corsodilaureaspec}}
+   {\uppercase{corso di laurea specialistica in \@corsodilaureaspec\\}}
+   {\ifthenelse{\not\isundefined{\@corsodilaurea}}
+   {\uppercase{corso di laurea in \@corsodilaurea\\}}{}}\end{large}
+
+   \begin{large}
+    \ifthenelse{\isundefined{\@correlatorea}}{\vspace{16ex}}
+    {\ifthenelse{\isundefined{\@correlatoreb}}{\vspace{10ex}}{\vspace{6ex}}}
+
+    {\setlength{\baselineskip}{1.5\baselineskip}
+
+     \begin{huge}\@titolo\end{huge}\\}
+
+    \ifthenelse{\isundefined{\@correlatorea}}{\vspace{16ex}}
+    {\ifthenelse{\isundefined{\@correlatoreb}}{\vspace{10ex}}{\vspace{6ex}}}
+
+    Tesi in\\
+    \@corso\\
+    \vfill        
+    \begin{multicols}{2}
+     \raggedright
+     \emph{Relatore}:\\
+     \@relatore\\
+  
+     \ifthenelse{\isundefined{\@correlatorea}}{}{
+      \bigskip
+      \emph{Correlatore}:\\
+      \vfill
+      \@correlatorea\\
+     }
+
+     \ifthenelse{\isundefined{\@correlatoreb}}{}{
+      \bigskip
+      \emph{Correlatore}:\\
+      \vfill
+      \@correlatoreb\\
+     }
+
+     \columnbreak
+     \raggedleft
+     \emph{Presentata da}:\\
+     \@laureando\\	  
+
+    \end{multicols}
+
+    \vfill
+    \rule{\textwidth}{.4pt}\\
+    \vfill
+    Sessione \@sessione\\
+    \vfill
+    Anno Accademico \@annoaccademico\\
+    \end{large}\end{center}	
+}\end{titlepage}}
+
+% --- Dedication command --- %
+\newcommand{\dedica}[1]{
+  \clearemptydoublepage
+  \thispagestyle{empty}
+  \vspace*{10ex}
+  \begin{Large}
+    \begin{flushright}
+      \emph{#1}
+    \end{flushright}
+  \end{Large}
+  \vfill
+  \clearemptydoublepage
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+EndPreamble
+
+# Standard style definition
+Style Standard
+  Margin  		Static
+  LatexType     Paragraph
+  LatexName 	dummy
+  ParIndent		MM
+  ParSkip 		0.4
+  Align 		Block
+  AlignPossible Block, Left, Right, Center
+  LabelType 	No_Label
+End
+
+Style 1._Facolta
+  LatexType     Command
+  LatexName     facolta
+  Margin		Dynamic
+  InTitle       1
+  Align         Block
+  BottomSep		0.5
+  LabelType		Static
+  LabelString   "1. Facolta:"
+  LabelSep      xx
+  LabelFont
+    Series      Bold
+    Size        Large
+    Color		Blue
+  EndFont
+End
+
+Style 2.a_Corso_di_laurea
+  LatexType     Command
+  LatexName     corsodilaurea
+  Margin		Dynamic
+  InTitle       1
+  Align         Block
+  BottomSep		0.5
+  LabelType		Static
+  LabelString   "2.a Corso di laurea:"
+  LabelSep      xx
+  LabelFont
+    Series      Bold
+    Size        Large
+    Color		Blue
+  EndFont
+  Preamble
+\newcommand{\@corsodilaurea}{?}
+\newcommand{\corsodilaurea}[1]{
+  \renewcommand{\@corsodilaurea}{\uppercase{#1}}}
+  EndPreamble
+End
+
+Style 2.b_Corso_di_laurea_spec.
+  LatexType     Command
+  LatexName     corsodilaureaspec
+  Margin		Dynamic
+  InTitle       1
+  Align         Block
+  BottomSep		0.5
+  LabelType		Static
+  LabelString   "2.b Corso di laurea specialistica:"
+  LabelSep      xx
+  LabelFont
+    Series      Bold
+    Size        Large
+    Color		Blue
+  EndFont
+  Preamble
+\newcommand{\@corsodilaureaspec}{?}
+\newcommand{\corsodilaureaspec}[1]{
+  \renewcommand{\@corsodilaureaspec}{\uppercase{#1}}}
+  EndPreamble
+End
+
+Style 3._Titolo
+  CopyStyle 	Title
+  LatexName		titolo
+  Align			Block
+  Margin		Dynamic
+  BottomSep		0.5
+  LabelType		Static
+  LabelString	"3. Titolo della tesi:"
+  LabelSep		xx
+  Font
+    Series		Medium
+    Size		Normal
+  EndFont
+  LabelFont
+    Series      Bold
+    Size        Large
+    Color		Blue
+  EndFont
+End
+
+Style 4._Corso
+  LatexType		Command
+  LatexName		corso
+  Margin		Dynamic
+  InTitle		1
+  Align			Block
+  BottomSep		0.5
+  LabelType		Static
+  LabelString	"4. Corso:"
+  LabelSep		xx
+  LabelFont
+    Series      Bold
+    Size        Large
+    Color		Blue
+  EndFont
+End
+
+Style 5._Laureando
+  LatexType		Command
+  LatexName		laureando
+  Margin		Dynamic
+  InTitle		1
+  Align			Block
+  BottomSep		0.5
+  LabelType		Static
+  LabelString   "5. Laureando:"
+  LabelSep      xx
+  LabelFont
+    Series      Bold
+    Size        Large
+    Color		Blue
+  EndFont
+End
+
+Style 6.a_Relatore
+  LatexType		Command
+  LatexName		relatore
+  Margin		Dynamic
+  InTitle		1
+  Align			Block
+  BottomSep		0.5
+  LabelType		Static
+  LabelString	"6.a Relatore:"
+  LabelSep		xx
+  LabelFont
+    Series      Bold
+    Size        Large
+    Color		Blue
+  EndFont
+End
+
+Style 6.b_Correlatore_1
+  LatexType		Command
+  LatexName		correlatorea
+  Margin		Dynamic
+  InTitle		1
+  Align			Block
+  BottomSep		0.5
+  LabelType		Static
+  LabelString	"6.b Correlatore 1:"
+  LabelSep		xx
+  LabelFont
+    Series      Bold
+    Size        Large
+    Color		Blue
+  EndFont
+  Preamble
+\newcommand{\@correlatorea}{?}
+\newcommand{\correlatorea}[2][Prof. Ing.]{
+  \renewcommand{\@correlatorea}{#1\\ \uppercase{#2}}}
+  EndPreamble
+End
+
+Style 6.c_Correlatore_2
+  LatexType		Command
+  LatexName		correlatoreb
+  Margin		Dynamic
+  InTitle		1
+  Align			Block
+  BottomSep		0.5
+  LabelType		Static
+  LabelString	"6.c Correlatore 2:"
+  LabelSep		xx
+  LabelFont
+    Series      Bold
+    Size        Large
+    Color		Blue
+  EndFont
+  Preamble
+\newcommand{\@correlatoreb}{?}
+\newcommand{\correlatoreb}[2][Dott.]{
+  \renewcommand{\@correlatoreb}{#1\\ \uppercase{#2}}}
+  EndPreamble
+End
+
+Style 7._Sessione
+  LatexType		Command
+  LatexName		sessione
+  Margin		Dynamic
+  Align			Block
+  InTitle		1
+  BottomSep		0.5
+  LabelType		Static
+  LabelString	"7. Sessione:"
+  LabelSep		xx
+  LabelFont
+    Series      Bold
+    Size        Large
+    Color		Blue
+  EndFont
+End
+
+Style 8._Anno_Accademico
+  LatexType		Command
+  LatexName		annoaccademico
+  Margin		Dynamic
+  InTitle		1
+  Align			Block
+  BottomSep		0.5
+  LabelType		Static
+  LabelString	"8. Anno accademico:"
+  LabelSep		xx
+  LabelFont
+    Series      Bold
+    Size        Large
+    Color		Blue
+  EndFont
+End
+
+Style 9._Dedica
+  LatexType		Command
+  LatexName		dedica
+  Margin		Dynamic
+  Align			Block
+  BottomSep		0.5
+  LabelType		Static
+  LabelString	"9. Dedica:"
+  LabelSep		xx
+  LabelFont
+    Series      Bold
+    Size        Large
+    Color		Green
+  EndFont
+End
